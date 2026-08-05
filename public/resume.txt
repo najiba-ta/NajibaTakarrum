@@ -1,0 +1,59 @@
+Najiba Takarrum
+Full Stack Developer
+
+Contact: +8801997182130 | Email: shahidnajiba@gmail.com | Address: Bangladesh
+
+GitHub: https://github.com/najiba-ta
+LinkedIn: https://linkedin.com/in/najiba-webdev
+Portfolio: https://najiba-portfolio.vercel.app
+
+CAREER OBJECTIVE
+Passionate and detail-oriented Full Stack Developer with expertise in building responsive, high-performance web applications
+using React.js, Next.js, TypeScript, Node.js, Express.js, and MongoDB. Adept at transforming complex user requirements into scalable, production-ready code
+with clean architecture and modern UI/UX design patterns. Driven to deliver robust full stack solutions, optimize web
+performance, and foster continuous growth within collaborative engineering teams.
+
+SKILLS
+Technical Skills: HTML5, CSS3, JavaScript (ES6+), TypeScript, React.js, Next.js, Tailwind CSS, Express.js, Node.js,
+MongoDB, RESTful APIs
+Tools & Platforms: Git, GitHub, VS Code, Vercel, Netlify, Postman, Figma, NPM, Chrome DevTools
+Soft Skills: Problem Solving, Team Collaboration, Analytical Thinking, Time Management, Adaptability, Active Listening,
+Continuous Learning
+
+PROFESSIONAL EXPERIENCE
+Full Stack Developer | Self-Employed & Project-Based Projects Jan 2026 - Present
+- Architected and deployed 10+ responsive web applications using React.js, Next.js, Node.js, and Tailwind CSS, ensuring
+100% cross-device compatibility and fluid user experience.
+- Optimized web performance and Google PageSpeed scores by 35% through Server-Side Rendering (SSR), code
+splitting, lazy loading, and reusable UI components.
+- Integrated RESTful APIs and managed complex asynchronous state to deliver seamless user interactions,
+optimistic UI updates, and robust error handling.
+
+PROJECTS
+1. WorldCupX (Sports Tournament Portal)
+Live Demo: https://world-cup-x-client.vercel.app | GitHub Repository: https://github.com/najiba-ta/worldcupx-client
+- Engineered interactive match fixture schedules, real-time score updates, and detailed team statistics rendering.
+- Designed fluid responsive grid layouts optimized for high-traffic mobile and desktop sports fans.
+- Implemented custom data filtering and search features for quick access to tournament standings and player
+profiles.
+Used Tech Stacks: React.js, JavaScript (ES6+), REST API, Tailwind CSS, Express.js, MongoDB
+
+2. LifeFlow (Healthcare Management System)
+Live Demo: https://life-flow-two.vercel.app/ | GitHub Repository: https://github.com/najiba-ta/Life-Flow
+- Developed an end-to-end blood donation & emergency request platform featuring real-time donor location
+matching.
+- Integrated secure JWT authentication and role-based access control (RBAC) for users and medical administrators.
+- Optimized database queries and API routing resulting in sub-100ms request handling times.
+Used Tech Stacks: React.js, Node.js, Express.js, MongoDB, Tailwind CSS
+
+3. Wisperia (Community Knowledge Platform)
+Live Demo: https://wisperia-client.vercel.app | GitHub Repository: https://github.com/najiba-ta/wisperia-client
+- Built a full-stack community platform for creating, discovering, and categorizing life lessons and personal growth
+insights.
+- Implemented Stripe payment integration for lifetime premium content creation and exclusive member privileges.
+- Constructed an administrative moderation dashboard for platform analytics, user management, and lesson
+reviews.
+Used Tech Stacks: Next.js, React.js, Node.js, Express.js, MongoDB, Better Auth, Stripe, HeroUI
+
+LANGUAGE PROFICIENCY
+Bengali: Native | English: Fluent (Professional Working Proficiency) | Hindi: Conversational / Intermediate

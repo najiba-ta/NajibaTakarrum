@@ -24,13 +24,16 @@ const Hero = ({ data }) => {
     setDownloaded(true);
     setTimeout(() => setDownloaded(false), 3000);
 
+    // Open clean PDF-formatted Resume in a new tab with print trigger
+    window.open('/resume.html?print=true', '_blank');
+
     const alertBox = document.createElement('div');
     alertBox.innerHTML = `
       <div style="position: fixed; bottom: 24px; right: 24px; z-index: 1000; background: var(--bg-modal); border: 1px solid var(--primary-light); color: var(--text-main); padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 12px; font-family: sans-serif;">
         <span style="font-size: 20px;">📄</span>
         <div>
-          <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--primary-light);">Resume Download Requested</h4>
-          <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Downloading Najiba Takarrum's CV...</p>
+          <h4 style="margin: 0; font-size: 14px; font-weight: 700; color: var(--primary-light);">Resume Download / Print Opened</h4>
+          <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Opening Najiba Takarrum's PDF Resume...</p>
         </div>
       </div>
     `;

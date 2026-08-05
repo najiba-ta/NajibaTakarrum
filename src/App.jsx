@@ -26,9 +26,36 @@ function App() {
   };
 
   return (
-    <div className="portfolio-app">
+    <div className="portfolio-app" style={{ position: 'relative', overflow: 'hidden' }}>
+      {/* Background Animated Ambient Glowing Glass Orbs */}
+      <div style={{
+        position: 'fixed',
+        top: '-10%',
+        left: '-5%',
+        width: '450px',
+        height: '450px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(2, 132, 199, 0.08) 50%, transparent 70%)',
+        filter: 'blur(70px)',
+        pointerEvents: 'none',
+        zIndex: 0
+      }} className="animate-orb-1" />
+
+      <div style={{
+        position: 'fixed',
+        bottom: '10%',
+        right: '-5%',
+        width: '500px',
+        height: '500px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(2, 132, 199, 0.18) 0%, rgba(244, 63, 94, 0.1) 50%, transparent 70%)',
+        filter: 'blur(80px)',
+        pointerEvents: 'none',
+        zIndex: 0
+      }} className="animate-orb-2" />
+
       <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main>
+      <main style={{ position: 'relative', zIndex: 1 }}>
         <Hero data={portfolioData.personal} />
         <About data={portfolioData.about} />
         <Skills categories={portfolioData.skills} />

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Najiba Takarrum - Full Stack Developer Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background-color: #f4f6f9;
+      color: #1e293b;
+      padding: 40px 20px;
+      line-height: 1.5;
+    }
+
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 50px 55px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Print styling to trigger browser PDF save perfectly */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        border: none;
+        padding: 20px 30px;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Action bar for easy download/print button */
+    .action-bar {
+      max-width: 850px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, #059669 0%, #0284c7 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid #059669;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+
+    header h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #059669;
+      margin-top: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+      color: #475569;
+      font-weight: 500;
+    }
+
+    .contact-info a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1.5px solid #cbd5e1;
+      padding-bottom: 5px;
+      margin-bottom: 12px;
+    }
+
+    p.objective {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    /* Skill Lists */
+    .skills-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .skill-group {
+      display: flex;
+      line-height: 1.5;
+    }
+
+    .skill-group strong {
+      min-width: 140px;
+      color: #0f172a;
+    }
+
+    .skill-group span {
+      color: #334155;
+    }
+
+    /* Experience & Projects */
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .item-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .item-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .item-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: #059669;
+      margin-bottom: 8px;
+    }
+
+    ul.bullet-list {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+
+    ul.bullet-list li {
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    .project-card {
+      margin-bottom: 18px;
+    }
+
+    .project-links {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .project-links a {
+      color: #0284c7;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .tech-stack {
+      font-size: 13px;
+      margin-top: 6px;
+      color: #0f172a;
+    }
+
+    .tech-stack strong {
+      color: #059669;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="action-bar no-print">
+    <button class="print-btn" onclick="window.print()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      Save as PDF / Download Resume
+    </button>
+  </div>
+
+  <div class="resume-container">
+    
+    <!-- HEADER -->
+    <header>
+      <h1>Najiba Takarrum</h1>
+      <h2>Full Stack Developer</h2>
+      <div class="contact-info">
+        <span>📍 Bangladesh</span>
+        <span>📞 +8801997182130</span>
+        <span>✉️ <a href="mailto:shahidnajiba@gmail.com">shahidnajiba@gmail.com</a></span>
+        <span>🌐 <a href="https://najiba-portfolio.vercel.app" target="_blank">Portfolio</a></span>
+        <span>💻 <a href="https://github.com/najiba-ta" target="_blank">GitHub</a></span>
+        <span>🔗 <a href="https://linkedin.com/in/najiba-webdev" target="_blank">LinkedIn</a></span>
+      </div>
+    </header>
+
+    <!-- CAREER OBJECTIVE -->
+    <section>
+      <div class="section-title">CAREER OBJECTIVE</div>
+      <p class="objective">
+        Passionate and detail-oriented Full Stack Developer with expertise in building responsive, high-performance web applications using React.js, Next.js, TypeScript, Node.js, Express.js, and MongoDB. Adept at transforming complex user requirements into scalable, production-ready code with clean architecture and modern UI/UX design patterns. Driven to deliver robust full stack solutions, optimize web performance, and foster continuous growth within collaborative engineering teams.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <div class="section-title">SKILLS</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <strong>Technical Skills:</strong>
+          <span>HTML5, CSS3, JavaScript (ES6+), TypeScript, React.js, Next.js, Tailwind CSS, Express.js, Node.js, MongoDB, RESTful APIs</span>
+        </div>
+        <div class="skill-group">
+          <strong>Tools & Platforms:</strong>
+          <span>Git, GitHub, VS Code, Vercel, Netlify, Postman, Figma, NPM, Chrome DevTools</span>
+        </div>
+        <div class="skill-group">
+          <strong>Soft Skills:</strong>
+          <span>Problem Solving, Team Collaboration, Analytical Thinking, Time Management, Adaptability, Active Listening, Continuous Learning</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section>
+      <div class="section-title">PROFESSIONAL EXPERIENCE</div>
+      <div>
+        <div class="item-header">
+          <div class="item-title">Full Stack Developer</div>
+          <div class="item-date">Jan 2026 - Present</div>
+        </div>
+        <div class="item-subtitle">Self-Employed & Project-Based Projects</div>
+        <ul class="bullet-list">
+          <li>Architected and deployed 10+ responsive web applications using React.js, Next.js, Node.js, and Tailwind CSS, ensuring 100% cross-device compatibility and fluid user experience.</li>
+          <li>Optimized web performance and Google PageSpeed scores by 35% through Server-Side Rendering (SSR), code splitting, lazy loading, and reusable UI components.</li>
+          <li>Integrated RESTful APIs and managed complex asynchronous state to deliver seamless user interactions, optimistic UI updates, and robust error handling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section>
+      <div class="section-title">PROJECTS</div>
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="item-header">
+          <div class="item-title">1. WorldCupX (Sports Tournament Portal)</div>
+        </div>
+        <div class="project-links">
+          <span>Live Demo: <a href="https://world-cup-x-client.vercel.app" target="_blank">Live Link</a></span> | 
+          <span>GitHub Repository: <a href="https://github.com/najiba-ta/worldcupx-client" target="_blank">GitHub Client</a></span>
+        </div>
+        <ul class="bullet-list">
+          <li>Engineered interactive match fixture schedules, real-time score updates, and detailed team statistics rendering.</li>
+          <li>Designed fluid responsive grid layouts optimized for high-traffic mobile and desktop sports fans.</li>
+          <li>Implemented custom data filtering and search features for quick access to tournament standings and player profiles.</li>
+        </ul>
+        <div class="tech-stack">
+          <strong>Used Tech Stacks:</strong> React.js, JavaScript (ES6+), REST API, Tailwind CSS, Express.js, MongoDB
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="item-header">
+          <div class="item-title">2. LifeFlow (Healthcare Management System)</div>
+        </div>
+        <div class="project-links">
+          <span>Live Demo: <a href="https://life-flow-two.vercel.app/" target="_blank">Live Link</a></span> | 
+          <span>GitHub Repository: <a href="https://github.com/najiba-ta/Life-Flow" target="_blank">GitHub Client</a></span>
+        </div>
+        <ul class="bullet-list">
+          <li>Developed an end-to-end blood donation & emergency request platform featuring real-time donor location matching.</li>
+          <li>Integrated secure JWT authentication and role-based access control (RBAC) for users and medical administrators.</li>
+          <li>Optimized database queries and API routing resulting in sub-100ms request handling times.</li>
+        </ul>
+        <div class="tech-stack">
+          <strong>Used Tech Stacks:</strong> React.js, Node.js, Express.js, MongoDB, Tailwind CSS
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="item-header">
+          <div class="item-title">3. Wisperia (Community Knowledge Platform)</div>
+        </div>
+        <div class="project-links">
+          <span>Live Demo: <a href="https://wisperia-client.vercel.app" target="_blank">Live Link</a></span> | 
+          <span>GitHub Repository: <a href="https://github.com/najiba-ta/wisperia-client" target="_blank">GitHub Client</a></span>
+        </div>
+        <ul class="bullet-list">
+          <li>Built a full-stack community platform for creating, discovering, and categorizing life lessons and personal growth insights.</li>
+          <li>Implemented Stripe payment integration for lifetime premium content creation and exclusive member privileges.</li>
+          <li>Constructed an administrative moderation dashboard for platform analytics, user management, and lesson reviews.</li>
+        </ul>
+        <div class="tech-stack">
+          <strong>Used Tech Stacks:</strong> Next.js, React.js, Node.js, Express.js, MongoDB, Better Auth, Stripe, HeroUI
+        </div>
+      </div>
+
+    </section>
+
+    <!-- LANGUAGE PROFICIENCY -->
+    <section>
+      <div class="section-title">LANGUAGE PROFICIENCY</div>
+      <p style="font-size: 14px; color: #334155;">
+        <strong>Bengali:</strong> Native &nbsp;|&nbsp; 
+        <strong>English:</strong> Fluent (Professional Working Proficiency) &nbsp;|&nbsp; 
+        <strong>Hindi:</strong> Conversational / Intermediate
+      </p>
+    </section>
+
+  </div>
+
+  <script>
+    // Auto-trigger print if requested via query param ?print=true
+    if (window.location.search.includes('print=true')) {
+      window.addEventListener('load', () => {
+        window.print();
+      });
+    }
+  </script>
+</body>
+</html>
