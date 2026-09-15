@@ -11,25 +11,25 @@ const Footer = ({ name, socials }) => {
     <footer style={{
       background: '#060911',
       borderTop: '1px solid var(--border-color)',
-      padding: '48px 0 32px 0',
+      padding: '40px 0 28px 0',
       position: 'relative'
     }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
         
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '24px', paddingBottom: '32px', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBottom: '24px', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }} className="footer-inner">
           
           {/* Footer Logo & Tagline */}
-          <div>
-            <a href="#hero" style={{ textDecoration: 'none', fontSize: '1.4rem', fontWeight: 800, color: 'white' }}>
+          <div className="footer-brand">
+            <a href="#hero" style={{ textDecoration: 'none', fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-main)' }}>
               Najiba<span className="text-gradient">.Dev</span>
             </a>
-            <p style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginTop: '6px' }}>
+            <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem', marginTop: '4px' }}>
               Architecting full-stack web applications with modern design & precision.
             </p>
           </div>
 
           {/* Social Links */}
-          <div style={{ display: 'flex', gap: '12px' }}>
+          <div style={{ display: 'flex', gap: '10px' }} className="footer-socials">
             {[
               { icon: <GithubIcon size={18} />, href: socials.github, label: 'GitHub' },
               { icon: <LinkedinIcon size={18} />, href: socials.linkedin, label: 'LinkedIn' },
@@ -65,31 +65,39 @@ const Footer = ({ name, socials }) => {
             onClick={scrollToTop}
             aria-label="Back to top"
             style={{
-              width: '42px',
-              height: '42px',
+              width: '40px',
+              height: '40px',
               borderRadius: '12px',
-              background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
+              background: 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
               border: 'none',
               color: 'white',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               cursor: 'pointer',
-              boxShadow: '0 0 15px rgba(99, 102, 241, 0.3)'
+              boxShadow: 'var(--shadow-glow)'
             }}
           >
-            <ArrowUp size={20} />
+            <ArrowUp size={18} />
           </button>
         </div>
 
         {/* Copyright notice */}
-        <div style={{ paddingTop: '24px', textAlign: 'center', fontSize: '0.88rem', color: 'var(--text-dim)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+        <div style={{ paddingTop: '20px', textAlign: 'center', fontSize: '0.82rem', color: 'var(--text-dim)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
           <span>© {new Date().getFullYear()} {name}. Built with</span>
-          <Heart size={14} color="#ec4899" fill="#ec4899" />
+          <Heart size={13} color="#ec4899" fill="#ec4899" />
           <span>using MERN & React Technologies.</span>
         </div>
 
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .footer-inner { flex-direction: column !important; text-align: center !important; }
+          .footer-brand { display: flex; flex-direction: column; align-items: center; }
+          .footer-socials { justify-content: center !important; }
+        }
+      `}</style>
     </footer>
   );
 };

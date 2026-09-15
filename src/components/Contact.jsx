@@ -12,71 +12,62 @@ const Contact = ({ data }) => {
     e.preventDefault();
     setLoading(true);
 
-    // 1. Send simulated real-time submission with emailjs
-    emailjs.send(
-      'default_service',
-      'template_default',
-      {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        to_email: data.contact.email
-      },
-      'public_key_demo'
-    ).catch(() => {
-      // Graceful fallback to mailto intent if service key is unconfigured
-      const mailtoUrl = `mailto:${data.contact.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-      window.open(mailtoUrl, '_blank');
-    }).finally(() => {
-      setLoading(false);
-      confetti({
-        particleCount: 80,
-        spread: 60,
-        origin: { y: 0.7 }
-      });
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      }, 4000);
+    // Build the mailto URL with form details
+    const subjectLine = `${formData.subject || 'Portfolio Direct Message'} - From ${formData.name}`;
+    const bodyContent = `Hello Najiba,\n\nYou have received a new message from your portfolio website:\n\nSender Name: ${formData.name}\nSender Email: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\n---\nSent via Portfolio Contact Form.`;
+    
+    const mailtoUrl = `mailto:${data.contact.email || 'shahidnajiba@gmail.com'}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyContent)}`;
+    
+    // Redirect browser to send prefilled email
+    window.location.href = mailtoUrl;
+
+    setLoading(false);
+    confetti({
+      particleCount: 80,
+      spread: 60,
+      origin: { y: 0.7 }
     });
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    }, 4000);
   };
 
   return (
-    <section id="contact" style={{ padding: '100px 0', position: 'relative' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+    <section id="contact" style={{ padding: 'clamp(60px, 10vw, 100px) 0', position: 'relative' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
         
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <Mail size={14} /> GET IN TOUCH
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
             Let's Work <span className="text-gradient">Together</span>
           </h2>
-          <p style={{ color: 'var(--text-muted)', marginTop: '8px', fontSize: '1rem' }}>
+          <p style={{ color: 'var(--text-muted)', marginTop: '8px', fontSize: 'clamp(0.88rem, 3vw, 1rem)' }}>
             Have a project in mind or want to discuss full-stack developer opportunities? Reach out directly!
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }} className="contact-grid">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px' }} className="contact-grid">
           
           {/* Left Column: Direct Contact Info Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             
             {/* Email Card */}
             <a
               href={`mailto:${data.contact.email}`}
               className="glass-panel"
-              style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none', color: 'inherit' }}
+              style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', shrink: 0 }}>
-                <Mail size={26} />
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', flexShrink: 0 }}>
+                <Mail size={22} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 600 }}>EMAIL ADDRESS</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f3f4f6' }}>{data.contact.email}</div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600 }}>EMAIL ADDRESS</div>
+                <div style={{ fontSize: 'clamp(0.9rem, 3.5vw, 1.1rem)', fontWeight: 700, color: 'var(--text-main)', wordBreak: 'break-all', overflowWrap: 'anywhere' }}>{data.contact.email}</div>
               </div>
             </a>
 
@@ -84,14 +75,14 @@ const Contact = ({ data }) => {
             <a
               href={`tel:${data.contact.phone}`}
               className="glass-panel"
-              style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none', color: 'inherit' }}
+              style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', shrink: 0 }}>
-                <Phone size={26} />
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', flexShrink: 0 }}>
+                <Phone size={22} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 600 }}>PHONE NUMBER</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f3f4f6' }}>{data.contact.phone}</div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600 }}>PHONE NUMBER</div>
+                <div style={{ fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)', fontWeight: 700, color: 'var(--text-main)' }}>{data.contact.phone}</div>
               </div>
             </a>
 
@@ -101,47 +92,47 @@ const Contact = ({ data }) => {
               target="_blank"
               rel="noopener noreferrer"
               className="glass-panel"
-              style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px', textDecoration: 'none', color: 'inherit' }}
+              style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', shrink: 0 }}>
-                <MessageSquare size={26} />
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', flexShrink: 0 }}>
+                <MessageSquare size={22} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 600 }}>WHATSAPP CHAT</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f3f4f6' }}>{data.contact.whatsapp}</div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600 }}>WHATSAPP CHAT</div>
+                <div style={{ fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)', fontWeight: 700, color: 'var(--text-main)' }}>{data.contact.whatsapp}</div>
               </div>
             </a>
 
             {/* Location Card */}
-            <div className="glass-panel" style={{ padding: '24px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <div style={{ width: '52px', height: '52px', borderRadius: '14px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', shrink: 0 }}>
-                <MapPin size={26} />
+            <div className="glass-panel" style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', flexShrink: 0 }}>
+                <MapPin size={22} />
               </div>
-              <div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--text-dim)', fontWeight: 600 }}>LOCATION</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f3f4f6' }}>{data.contact.location}</div>
+              <div style={{ minWidth: 0, flex: 1 }}>
+                <div style={{ fontSize: '0.78rem', color: 'var(--text-dim)', fontWeight: 600 }}>LOCATION</div>
+                <div style={{ fontSize: 'clamp(0.95rem, 3.5vw, 1.1rem)', fontWeight: 700, color: 'var(--text-main)' }}>{data.contact.location}</div>
               </div>
             </div>
 
           </div>
 
           {/* Right Column: Direct Message Form */}
-          <div className="glass-panel" style={{ padding: '36px' }}>
-            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '24px', color: '#f3f4f6' }}>
+          <div className="glass-panel" style={{ padding: 'clamp(20px, 5vw, 36px)' }}>
+            <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700, marginBottom: '20px', color: 'var(--text-main)' }}>
               Send Me a Direct Message
             </h3>
 
             {submitted ? (
-              <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '30px', borderRadius: '16px', textAlign: 'center' }}>
-                <CheckCircle2 size={48} color="#34d399" style={{ margin: '0 auto 16px auto' }} />
-                <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'white', marginBottom: '8px' }}>Message Delivered!</h4>
-                <p style={{ color: 'var(--text-muted)' }}>Thank you for reaching out. I will get back to you shortly.</p>
+              <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '24px', borderRadius: '14px', textAlign: 'center' }}>
+                <CheckCircle2 size={42} color="#34d399" style={{ margin: '0 auto 12px auto' }} />
+                <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '6px' }}>Message Delivered!</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Thank you for reaching out. I will get back to you shortly.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} className="form-row">
+              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }} className="form-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>Your Name</label>
+                    <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>Your Name</label>
                     <input
                       type="text"
                       required
@@ -150,18 +141,19 @@ const Contact = ({ data }) => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       style={{
                         width: '100%',
-                        padding: '12px 16px',
+                        padding: '12px 14px',
                         borderRadius: '10px',
-                        background: 'rgba(255, 255, 255, 0.04)',
+                        background: 'rgba(125, 125, 125, 0.05)',
                         border: '1px solid var(--border-color)',
-                        color: 'white',
+                        color: 'var(--text-main)',
+                        fontSize: '16px',
                         outline: 'none'
                       }}
                     />
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>Your Email</label>
+                    <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>Your Email</label>
                     <input
                       type="email"
                       required
@@ -170,11 +162,12 @@ const Contact = ({ data }) => {
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       style={{
                         width: '100%',
-                        padding: '12px 16px',
+                        padding: '12px 14px',
                         borderRadius: '10px',
-                        background: 'rgba(255, 255, 255, 0.04)',
+                        background: 'rgba(125, 125, 125, 0.05)',
                         border: '1px solid var(--border-color)',
-                        color: 'white',
+                        color: 'var(--text-main)',
+                        fontSize: '16px',
                         outline: 'none'
                       }}
                     />
@@ -182,7 +175,7 @@ const Contact = ({ data }) => {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>Subject</label>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>Subject</label>
                   <input
                     type="text"
                     required
@@ -191,39 +184,41 @@ const Contact = ({ data }) => {
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '12px 16px',
+                      padding: '12px 14px',
                       borderRadius: '10px',
-                      background: 'rgba(255, 255, 255, 0.04)',
+                      background: 'rgba(125, 125, 125, 0.05)',
                       border: '1px solid var(--border-color)',
-                      color: 'white',
+                      color: 'var(--text-main)',
+                      fontSize: '16px',
                       outline: 'none'
                     }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '8px', fontWeight: 600 }}>Your Message</label>
+                  <label style={{ display: 'block', fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '6px', fontWeight: 600 }}>Your Message</label>
                   <textarea
                     required
-                    rows="5"
+                    rows="4"
                     placeholder="Hi Najiba, I would like to discuss..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     style={{
                       width: '100%',
-                      padding: '12px 16px',
+                      padding: '12px 14px',
                       borderRadius: '10px',
-                      background: 'rgba(255, 255, 255, 0.04)',
+                      background: 'rgba(125, 125, 125, 0.05)',
                       border: '1px solid var(--border-color)',
-                      color: 'white',
+                      color: 'var(--text-main)',
+                      fontSize: '16px',
                       outline: 'none',
                       resize: 'vertical'
                     }}
                   />
                 </div>
 
-                <button type="submit" disabled={loading} className="btn-primary" style={{ justifyContent: 'center', marginTop: '8px', opacity: loading ? 0.7 : 1 }}>
-                  <Send size={18} /> {loading ? 'Sending Message...' : 'Send Message'}
+                <button type="submit" disabled={loading} className="btn-primary" style={{ justifyContent: 'center', marginTop: '4px', padding: '12px 24px', opacity: loading ? 0.7 : 1, fontSize: '0.95rem' }}>
+                  <Send size={16} /> {loading ? 'Sending Message...' : 'Send Message'}
                 </button>
               </form>
             )}

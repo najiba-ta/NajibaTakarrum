@@ -22,7 +22,7 @@
   
   --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.3);
   --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --nav-bg: rgba(11, 15, 25, 0.88);
+  --nav-bg: rgba(11, 15, 25, 0.75);
 }
 
 /* Premium Light Theme Variables (Modern Crisp Warm White & Emerald Mint Accent) */
@@ -47,7 +47,7 @@
   
   --shadow-glow: 0 0 25px rgba(5, 150, 105, 0.2);
   --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-  --nav-bg: rgba(255, 255, 255, 0.92);
+  --nav-bg: rgba(248, 250, 252, 0.75);
 }
 
 :root {
@@ -228,28 +228,6 @@ body {
   background: var(--primary);
 }
 
-/* Keyframe Animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-14px) rotate(1deg); }
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.65; transform: scale(1.08); }
-}
-
-@keyframes spinSlow {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes ambientOrb {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -269,3 +247,139 @@ body {
 .animate-orb-2 {
   animation: ambientOrb 18s ease-in-out infinite reverse;
 }
+
+/* Hide scrollbar helper */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Touch & Mobile UX Improvements */
+button, a, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent zoom on focus on iOS Safari for form inputs */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Premium Impressive Moving Grid Overlay & Background Animations */
+.portfolio-app {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.portfolio-app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  background-image: 
+    linear-gradient(var(--border-color) 2px, transparent 2px),
+    linear-gradient(90deg, var(--border-color) 2px, transparent 2px);
+  background-size: 60px 60px;
+  background-position: center;
+  animation: movingGrid 22s linear infinite;
+}
+
+/* Light mode adjustment: increase grid line color and opacity for premium visible outlines */
+[data-theme="light"] .portfolio-app::before {
+  opacity: 0.35;
+  background-image: 
+    linear-gradient(rgba(5, 150, 105, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(5, 150, 105, 0.15) 2px, transparent 2px);
+}
+
+/* Subtle breathing light lines crossing in the background */
+.portfolio-app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(16, 185, 129, 0.18) 0%, transparent 60%);
+  transition: background 0.15s ease;
+}
+
+/* Brighten cursor spotlight in light mode for visible dynamic trails */
+[data-theme="light"] .portfolio-app::after {
+  opacity: 0.6;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(5, 150, 105, 0.22) 0%, transparent 60%);
+}
+
+@keyframes movingGrid {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(40px) rotate(2deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes fluidBackground {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Enhancing existing float and glow with smooth easing */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-16px) rotate(1.5deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1) translate(0, 0); }
+  50% { opacity: 0.85; transform: scale(1.15) translate(15px, -15px); }
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ambientOrb {
+  0%, 100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  33% { transform: translate(60px, -80px) scale(1.1) rotate(120deg); }
+  66% { transform: translate(-40px, 40px) scale(0.9) rotate(240deg); }
+}
+
+/* Global Mobile Responsiveness Tweaks */
+@media (max-width: 768px) {
+  .glass-panel {
+    border-radius: 16px;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    font-size: 0.92rem;
+  }
+}
+
+

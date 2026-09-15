@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Cpu, Code2, Server, Terminal, Layers, FileCode, Layout, Palette, Database, ShieldCheck, GitBranch, Send, Globe } from 'lucide-react';
+import { Cpu, Code2, Server, Terminal, Layers, FileCode, Layout, Palette, Database, ShieldCheck, GitBranch, Send, Globe, CloudCog } from 'lucide-react';
 
 const iconMap = {
   Code2: <Code2 size={20} />,
@@ -27,21 +27,32 @@ const Skills = ({ categories }) => {
     : categories.filter(c => c.category === activeTab);
 
   return (
-    <section id="skills" style={{ padding: '100px 0', position: 'relative' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+    <section id="skills" style={{ padding: 'clamp(60px, 10vw, 100px) 0', position: 'relative' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
         
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '36px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <Cpu size={14} /> TECHNICAL EXPERTISE
           </div>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
             Skills & <span className="text-gradient">Proficiencies</span>
           </h2>
         </div>
 
-        {/* Category Tabs */}
-        <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '12px', marginBottom: '40px' }}>
+        {/* Category Tabs (Scrollable on mobile) */}
+        <div
+          className="no-scrollbar"
+          style={{
+            display: 'flex',
+            justify: 'flex-start',
+            gap: '8px',
+            marginBottom: '32px',
+            overflowX: 'auto',
+            paddingBottom: '6px',
+            maxWidth: '100%'
+          }}
+        >
           {tabList.map((tab) => {
             const isActive = activeTab === tab;
             return (
@@ -49,16 +60,18 @@ const Skills = ({ categories }) => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 style={{
-                  background: isActive ? 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)' : 'rgba(255, 255, 255, 0.04)',
+                  background: isActive ? 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)' : 'rgba(255, 255, 255, 0.04)',
                   color: isActive ? 'white' : 'var(--text-muted)',
                   border: isActive ? 'none' : '1px solid var(--border-color)',
-                  padding: '10px 22px',
+                  padding: '8px 18px',
                   borderRadius: '30px',
                   fontWeight: 600,
-                  fontSize: '0.9rem',
+                  fontSize: '0.85rem',
                   cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
                   transition: 'all 0.3s ease',
-                  boxShadow: isActive ? '0 0 20px rgba(99, 102, 241, 0.3)' : 'none'
+                  boxShadow: isActive ? 'var(--shadow-glow)' : 'none'
                 }}
               >
                 {tab}
@@ -68,33 +81,33 @@ const Skills = ({ categories }) => {
         </div>
 
         {/* Skill Category Cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: '24px' }}>
           {filteredCategories.map((cat, catIdx) => (
-            <div key={catIdx} className="glass-panel" style={{ padding: '32px' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '24px', color: '#f3f4f6', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
+            <div key={catIdx} className="glass-panel" style={{ padding: 'clamp(20px, 5vw, 32px)' }}>
+              <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.25rem)', fontWeight: 700, marginBottom: '20px', color: '#f3f4f6', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
                 {cat.category}
               </h3>
               
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {cat.items.map((skill, skillIdx) => (
                   <div key={skillIdx}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--text-main)', fontWeight: 600 }}>
-                        <span style={{ color: '#818cf8' }}>{iconMap[skill.icon] || <Code2 size={18} />}</span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-main)', fontWeight: 600, fontSize: '0.9rem' }}>
+                        <span style={{ color: 'var(--primary-light)', display: 'flex', alignItems: 'center' }}>{iconMap[skill.icon] || <Code2 size={16} />}</span>
                         <span>{skill.name}</span>
                       </div>
-                      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#c084fc', fontFamily: 'var(--font-mono)' }}>
+                      <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--primary-light)', fontFamily: 'var(--font-mono)' }}>
                         {skill.level}%
                       </span>
                     </div>
 
                     {/* Skill Graphical Progress Bar */}
-                    <div style={{ width: '100%', height: '8px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '7px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
                       <div
                         style={{
                           width: `${skill.level}%`,
                           height: '100%',
-                          background: 'linear-gradient(90deg, #6366f1 0%, #a855f7 50%, #38bdf8 100%)',
+                          background: 'linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%)',
                           borderRadius: '4px',
                           transition: 'width 1s ease-in-out'
                         }}
