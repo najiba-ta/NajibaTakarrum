@@ -9,14 +9,15 @@ const Footer = ({ name, socials }) => {
 
   return (
     <footer style={{
-      background: '#060911',
+      background: 'var(--nav-bg)',
+      backdropFilter: 'blur(16px)',
       borderTop: '1px solid var(--border-color)',
       padding: '40px 0 28px 0',
       position: 'relative'
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
         
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBottom: '24px', borderBottom: '1px solid rgba(255, 255, 255, 0.05)' }} className="footer-inner">
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '20px', paddingBottom: '24px', borderBottom: '1px solid var(--border-color)' }} className="footer-inner">
           
           {/* Footer Logo & Tagline */}
           <div className="footer-brand">
@@ -46,7 +47,7 @@ const Footer = ({ name, socials }) => {
                   width: '38px',
                   height: '38px',
                   borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.04)',
+                  background: 'rgba(125, 125, 125, 0.08)',
                   border: '1px solid var(--border-color)',
                   display: 'flex',
                   alignItems: 'center',
