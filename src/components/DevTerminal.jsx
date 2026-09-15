@@ -112,8 +112,8 @@ const DevTerminal = ({ personalData }) => {
           <div
             style={{
               padding: '10px 16px',
-              background: 'rgba(125, 125, 125, 0.05)',
-              borderBottom: '1px solid var(--border-color)',
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between'
@@ -121,20 +121,20 @@ const DevTerminal = ({ personalData }) => {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Terminal size={14} color="#10b981" />
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>najiba@portfolio: ~</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: '#e2e8f0' }}>najiba@portfolio: ~</span>
             </div>
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
                 onClick={() => setHistory([])}
                 aria-label="clear logs"
-                style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
               >
                 <Trash2 size={14} />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="close terminal"
-                style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+                style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
               >
                 <X size={14} />
               </button>
@@ -159,7 +159,8 @@ const DevTerminal = ({ personalData }) => {
               <div
                 key={idx}
                 style={{
-                  color: log.type === 'user' ? '#38bdf8' : log.type === 'system' ? '#9ca3af' : '#34d399',
+                  color: log.type === 'user' ? '#38bdf8' : log.type === 'system' ? '#cbd5e1' : '#34d399',
+                  fontWeight: log.type === 'user' ? 600 : 500,
                   whiteSpace: 'pre-wrap'
                 }}
               >

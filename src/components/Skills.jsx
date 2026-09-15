@@ -32,10 +32,10 @@ const Skills = ({ categories }) => {
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid var(--border-accent)', borderRadius: '20px', color: 'var(--accent-indigo)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <Cpu size={14} /> TECHNICAL EXPERTISE
           </div>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800, color: 'var(--text-main)' }}>
             Skills & <span className="text-gradient">Proficiencies</span>
           </h2>
         </div>
@@ -60,8 +60,8 @@ const Skills = ({ categories }) => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 style={{
-                  background: isActive ? 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)' : 'rgba(255, 255, 255, 0.04)',
-                  color: isActive ? 'white' : 'var(--text-muted)',
+                  background: isActive ? 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)' : 'var(--bg-card)',
+                  color: isActive ? '#ffffff' : 'var(--text-muted)',
                   border: isActive ? 'none' : '1px solid var(--border-color)',
                   padding: '8px 18px',
                   borderRadius: '30px',
@@ -84,7 +84,7 @@ const Skills = ({ categories }) => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: '24px' }}>
           {filteredCategories.map((cat, catIdx) => (
             <div key={catIdx} className="glass-panel" style={{ padding: 'clamp(20px, 5vw, 32px)' }}>
-              <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.25rem)', fontWeight: 700, marginBottom: '20px', color: '#f3f4f6', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
+              <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.25rem)', fontWeight: 700, marginBottom: '20px', color: 'var(--text-main)', borderBottom: '1px solid var(--border-color)', paddingBottom: '10px' }}>
                 {cat.category}
               </h3>
               
@@ -102,7 +102,7 @@ const Skills = ({ categories }) => {
                     </div>
 
                     {/* Skill Graphical Progress Bar */}
-                    <div style={{ width: '100%', height: '7px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ width: '100%', height: '7px', background: 'var(--border-color)', borderRadius: '4px', overflow: 'hidden' }}>
                       <div
                         style={{
                           width: `${skill.level}%`,

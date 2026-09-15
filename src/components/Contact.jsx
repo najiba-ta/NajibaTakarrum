@@ -40,7 +40,7 @@ const Contact = ({ data }) => {
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: 'var(--accent-indigo)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <Mail size={14} /> GET IN TOUCH
           </div>
           <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
@@ -62,7 +62,7 @@ const Contact = ({ data }) => {
               className="glass-panel"
               style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', flexShrink: 0 }}>
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-indigo)', flexShrink: 0 }}>
                 <Mail size={22} />
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
@@ -77,7 +77,7 @@ const Contact = ({ data }) => {
               className="glass-panel"
               style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', flexShrink: 0 }}>
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)', flexShrink: 0 }}>
                 <Phone size={22} />
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
@@ -94,7 +94,7 @@ const Contact = ({ data }) => {
               className="glass-panel"
               style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}
             >
-              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#34d399', flexShrink: 0 }}>
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-light)', flexShrink: 0 }}>
                 <MessageSquare size={22} />
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>
@@ -105,7 +105,7 @@ const Contact = ({ data }) => {
 
             {/* Location Card */}
             <div className="glass-panel" style={{ padding: 'clamp(16px, 4vw, 24px)', display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', flexShrink: 0 }}>
+              <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'rgba(6, 182, 212, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-blue)', flexShrink: 0 }}>
                 <MapPin size={22} />
               </div>
               <div style={{ minWidth: 0, flex: 1 }}>

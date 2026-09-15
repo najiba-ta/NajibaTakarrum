@@ -4,10 +4,10 @@
 [data-theme="dark"] {
   --bg-main: #0b0f19;
   --bg-body-radial: radial-gradient(circle at 50% 0%, #111827 0%, #0b0f19 80%);
-  --bg-card: rgba(17, 24, 39, 0.75);
-  --bg-card-hover: rgba(31, 41, 55, 0.85);
+  --bg-card: rgba(17, 24, 39, 0.85);
+  --bg-card-hover: rgba(31, 41, 55, 0.95);
   --bg-modal: #111827;
-  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.1);
   --border-accent: rgba(16, 185, 129, 0.4);
   
   --primary: #059669;
@@ -15,39 +15,45 @@
   --secondary: #0284c7;
   --accent: #38bdf8;
   --accent-pink: #f43f5e;
+  --accent-blue: #38bdf8;
+  --accent-purple: #c084fc;
+  --accent-indigo: #818cf8;
   
-  --text-main: #f9fafb;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
   
   --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.3);
   --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --nav-bg: rgba(11, 15, 25, 0.75);
+  --nav-bg: rgba(11, 15, 25, 0.85);
 }
 
-/* Premium Light Theme Variables (Modern Crisp Warm White & Emerald Mint Accent) */
+/* Premium Light Theme Variables (Modern Crisp Crisp-White & Deep Contrast Navy Accent) */
 [data-theme="light"] {
-  --bg-main: #f8fafc;
-  --bg-body-radial: radial-gradient(circle at 50% 0%, #e0f2fe 0%, #f8fafc 80%);
+  --bg-main: #f1f5f9;
+  --bg-body-radial: radial-gradient(circle at 50% 0%, #e2e8f0 0%, #f1f5f9 80%);
   --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
+  --bg-card-hover: #f8fafc;
   --bg-modal: #ffffff;
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-accent: rgba(5, 150, 105, 0.4);
+  --border-color: rgba(15, 23, 42, 0.12);
+  --border-accent: rgba(5, 150, 105, 0.5);
   
   --primary: #059669;
   --primary-light: #047857;
   --secondary: #0284c7;
   --accent: #0369a1;
-  --accent-pink: #e11d48;
+  --accent-pink: #be185d;
+  --accent-blue: #0284c7;
+  --accent-purple: #6b21a8;
+  --accent-indigo: #3730a3;
   
-  --text-main: #0f172a;
-  --text-muted: #334155;
-  --text-dim: #64748b;
+  --text-main: #020617;    /* Pure deep solid bold black */
+  --text-muted: #1e293b;   /* Solid high-contrast dark slate for paragraphs */
+  --text-dim: #334155;     /* Dark readable slate gray for labels & subtitles */
   
-  --shadow-glow: 0 0 25px rgba(5, 150, 105, 0.2);
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-  --nav-bg: rgba(248, 250, 252, 0.75);
+  --shadow-glow: 0 0 25px rgba(5, 150, 105, 0.22);
+  --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+  --nav-bg: rgba(255, 255, 255, 0.92);
 }
 
 :root {

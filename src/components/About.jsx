@@ -84,10 +84,10 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.2)', borderRadius: '20px', color: '#c084fc', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(168, 85, 247, 0.1)', border: '1px solid var(--border-accent)', borderRadius: '20px', color: 'var(--accent-purple)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <User size={14} /> GET TO KNOW ME
           </div>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800, color: 'var(--text-main)' }}>
             About <span className="text-gradient">My Journey & Passion</span>
           </h2>
         </div>
@@ -98,10 +98,10 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
           {/* Programming Journey Card */}
           <div className="glass-panel" style={{ padding: 'clamp(20px, 5vw, 36px)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#818cf8', flexShrink: 0 }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-indigo)', flexShrink: 0 }}>
                 <Compass size={22} />
               </div>
-              <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700 }}>My Programming Journey</h3>
+              <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700, color: 'var(--text-main)' }}>My Programming Journey</h3>
             </div>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.75, fontSize: 'clamp(0.92rem, 3vw, 1.02rem)' }}>
               {data.journey}
@@ -111,10 +111,10 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
           {/* Work Preference Card */}
           <div className="glass-panel" style={{ padding: 'clamp(20px, 5vw, 36px)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#c084fc', flexShrink: 0 }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(168, 85, 247, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)', flexShrink: 0 }}>
                 <Terminal size={22} />
               </div>
-              <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700 }}>Work I Love & Enjoy</h3>
+              <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700, color: 'var(--text-main)' }}>Work I Love & Enjoy</h3>
             </div>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.75, fontSize: 'clamp(0.92rem, 3vw, 1.02rem)' }}>
               {data.workPreference}
@@ -131,7 +131,7 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
                 <Terminal size={22} />
               </div>
               <div>
-                <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', fontWeight: 700, margin: 0 }}>Interactive Code Editor</h3>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', fontWeight: 700, margin: 0, color: 'var(--text-main)' }}>Interactive Code Editor</h3>
                 <p style={{ margin: 0, fontSize: '0.78rem', color: 'var(--text-muted)' }}>Run real Javascript to inspect my developer logic</p>
               </div>
             </div>
@@ -147,9 +147,9 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id)}
                   style={{
-                    background: activeTab === tab.id ? 'var(--primary)' : 'transparent',
+                    background: activeTab === tab.id ? 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)' : 'var(--bg-card)',
                     color: activeTab === tab.id ? '#ffffff' : 'var(--text-muted)',
-                    border: 'none',
+                    border: activeTab === tab.id ? 'none' : '1px solid var(--border-color)',
                     borderRadius: '8px',
                     padding: '6px 10px',
                     fontSize: '0.75rem',
@@ -170,8 +170,8 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
             
             {/* Input Editor */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(125,125,125,0.05)', padding: '8px 14px', borderRadius: '8px 8px 0 0', borderBottom: '1px solid var(--border-color)' }}>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-dim)', fontFamily: 'var(--font-mono)' }}>source_file.js</span>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'rgba(15, 23, 42, 0.9)', padding: '8px 14px', borderRadius: '8px 8px 0 0', borderBottom: '1px solid var(--border-color)', color: '#ffffff' }}>
+                <span style={{ fontSize: '0.75rem', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>source_file.js</span>
                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>
               </div>
               <textarea
@@ -180,7 +180,7 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
                 style={{
                   width: '100%',
                   height: '210px',
-                  background: 'rgba(10, 15, 25, 0.95)',
+                  background: '#070a13',
                   color: '#a7f3d0',
                   border: '1px solid var(--border-color)',
                   borderRadius: '0 0 12px 12px',
@@ -195,15 +195,15 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
             </div>
 
             {/* Run Panel Console */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '14px', background: 'rgba(125, 125, 125, 0.03)', border: '1px solid var(--border-color)', borderRadius: '14px', padding: '16px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '14px', background: '#0b0f19', border: '1px solid var(--border-color)', borderRadius: '14px', padding: '16px' }}>
               <div>
-                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-main)', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <h4 style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f8fafc', marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   Console Output
                 </h4>
                 <pre
                   style={{
-                    background: 'rgba(0, 0, 0, 0.3)',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    background: 'rgba(0, 0, 0, 0.5)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                     borderRadius: '8px',
                     padding: '10px 14px',
                     color: '#38bdf8',
@@ -243,17 +243,17 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
         {/* Hobbies & Interests Section */}
         <div className="glass-panel" style={{ marginTop: '24px', padding: 'clamp(20px, 5vw, 36px)' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(236, 72, 153, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f472b6', flexShrink: 0 }}>
+            <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(236, 72, 153, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-pink)', flexShrink: 0 }}>
               <Heart size={22} />
             </div>
-            <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700 }}>Beyond the Code (Hobbies & Interests)</h3>
+            <h3 style={{ fontSize: 'clamp(1.15rem, 4vw, 1.4rem)', fontWeight: 700, color: 'var(--text-main)' }}>Beyond the Code (Hobbies & Interests)</h3>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '12px' }}>
             {data.hobbies.map((hobby, index) => (
               <div
                 key={index}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.03)',
+                  background: 'var(--bg-card)',
                   border: '1px solid var(--border-color)',
                   borderRadius: '12px',
                   padding: '14px 16px',
@@ -267,14 +267,14 @@ console.log("Urgent blood seekers found in Brahmanbaria:", urgentInHometown.leng
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.borderColor = '#c084fc';
+                  e.currentTarget.style.borderColor = 'var(--accent-purple)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
                   e.currentTarget.style.borderColor = 'var(--border-color)';
                 }}
               >
-                <span style={{ color: '#818cf8', fontSize: '1.1rem' }}>✦</span>
+                <span style={{ color: 'var(--accent-indigo)', fontSize: '1.1rem' }}>✦</span>
                 {hobby}
               </div>
             ))}

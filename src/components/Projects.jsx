@@ -9,10 +9,10 @@ const Projects = ({ projects, onViewProject }) => {
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid rgba(99, 102, 241, 0.2)', borderRadius: '20px', color: '#818cf8', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '4px 14px', background: 'rgba(99, 102, 241, 0.1)', border: '1px solid var(--border-accent)', borderRadius: '20px', color: 'var(--accent-indigo)', fontSize: '0.85rem', fontWeight: 600, marginBottom: '12px' }}>
             <Code2 size={14} /> PORTFOLIO SHOWCASE
           </div>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800 }}>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 5vw, 3rem)', fontWeight: 800, color: 'var(--text-main)' }}>
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p style={{ color: 'var(--text-muted)', marginTop: '8px', fontSize: 'clamp(0.88rem, 3vw, 1rem)' }}>
@@ -71,9 +71,9 @@ const Projects = ({ projects, onViewProject }) => {
                       <span key={idx} style={{
                         fontSize: '0.72rem',
                         fontWeight: 600,
-                        color: '#818cf8',
-                        background: 'rgba(99, 102, 241, 0.1)',
-                        border: '1px solid rgba(99, 102, 241, 0.2)',
+                        color: 'var(--accent-indigo)',
+                        background: 'rgba(99, 102, 241, 0.12)',
+                        border: '1px solid var(--border-accent)',
                         padding: '3px 8px',
                         borderRadius: '6px',
                         fontFamily: 'var(--font-mono)'
