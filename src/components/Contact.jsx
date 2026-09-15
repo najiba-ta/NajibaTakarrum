@@ -8,30 +8,53 @@ const Contact = ({ data }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    // Build the mailto URL with form details
-    const subjectLine = `${formData.subject || 'Portfolio Direct Message'} - From ${formData.name}`;
-    const bodyContent = `Hello Najiba,\n\nYou have received a new message from your portfolio website:\n\nSender Name: ${formData.name}\nSender Email: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\n---\nSent via Portfolio Contact Form.`;
-    
-    const mailtoUrl = `mailto:${data.contact.email || 'shahidnajiba@gmail.com'}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyContent)}`;
-    
-    // Redirect browser to send prefilled email
-    window.location.href = mailtoUrl;
+    const targetEmail = (data && data.contact && data.contact.email) || 'shahidnajiba@gmail.com';
 
-    setLoading(false);
-    confetti({
-      particleCount: 80,
-      spread: 60,
-      origin: { y: 0.7 }
-    });
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    try {
+      // Send direct HTTP request to FormSubmit endpoint targeting shahidnajiba@gmail.com
+      const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject || 'Portfolio Direct Message',
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}: ${formData.subject || 'Inquiry'}`,
+          _replyto: formData.email,
+          _captcha: 'false'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('FormSubmit endpoint failed');
+      }
+    } catch (error) {
+      console.warn("FormSubmit API submission warning, using mailto fallback:", error);
+      const subjectLine = `${formData.subject || 'Portfolio Direct Message'} - From ${formData.name}`;
+      const bodyContent = `Hello Najiba,\n\nYou have received a new message from your portfolio website:\n\nSender Name: ${formData.name}\nSender Email: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\n---\nSent via Portfolio Contact Form.`;
+      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyContent)}`;
+      window.location.href = mailtoUrl;
+    } finally {
+      setLoading(false);
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.7 }
+      });
+      setSubmitted(true);
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, 5000);
+    }
   };
 
   return (
